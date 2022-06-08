@@ -47,7 +47,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 base: core22
 license: 'GPL-3.0+'
 architectures:
-  - build-on: amd64
+  - build-on: arm64
 
 plugs:
   gtk-3-themes:
@@ -130,7 +130,7 @@ parts:
     plugin: make
     make-parameters:
       - build
-      - ARCH=x86-64-modern
+      - ARCH=armv8
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev

@@ -44,7 +44,7 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core22
+base: core18
 license: 'GPL-3.0+'
 architectures:
   - build-on: i386
@@ -110,7 +110,7 @@ parts:
   sanmill:
     after: [desktop-qt5]
     plugin: qmake
-    qmake-parameters:
+    options:
       - "PREFIX=/usr/local/bin"
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
