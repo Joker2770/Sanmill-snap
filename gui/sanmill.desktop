@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1.39
+Encoding=UTF-8
+Name=Sanmill
+Comment=Sanmill is a free, powerful UCI-like N men's morris program with Qt GUI.
+Exec=sanmill
+Terminal=false
+Type=Application
+Categories=Game;BoardGame;
+Icon=${SNAP}/meta/gui/sanmill.png
