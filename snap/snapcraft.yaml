@@ -111,7 +111,7 @@ parts:
     after: [desktop-qt5]
     plugin: qmake
     qmake-parameters:
-      - "PREFIX=/usr/local"
+      - "PREFIX=/usr/local/bin"
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev
