@@ -96,9 +96,7 @@ apps:
       - network-status
       - network-setup-control
       - network-setup-observe
-      - process-control
       - audio-playback
-      - mount-observe
     environment:
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
@@ -117,6 +115,7 @@ parts:
     source-branch: dev
     build-packages:
       - gcc
+      - g++
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
@@ -127,9 +126,8 @@ parts:
 
   cli:
     plugin: make
-    make-parameters:
-      - -j
-      - build
+    # make-parameters:
+      # - build
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev
