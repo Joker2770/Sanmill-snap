@@ -65,7 +65,7 @@ layout:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
-  q5go:
+  sanmill:
     command: usr/local/bin/MillGame
     command-chain:
       - bin/desktop-launch
@@ -96,8 +96,11 @@ apps:
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
 
+  cli:
+    command: usr/local/bin/sanmill
+
 parts:
-  q5go:
+  sanmill:
     after: [desktop-qt5]
     plugin: qmake
     options:
@@ -114,6 +117,20 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
+
+  cli:
+    plugin: make
+    make-parameters:
+      - -j
+      - build
+    source: https://github.com/calcitem/Sanmill.git
+    source-type: git
+    source-branch: dev
+    source-subdir: src
+    build-packages:
+      - gcc
+      - g++
+      - make
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
