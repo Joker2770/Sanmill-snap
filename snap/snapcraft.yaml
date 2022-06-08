@@ -44,8 +44,10 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core18
+base: core22
 license: 'GPL-3.0+'
+architectures:
+  - build-on: amd64
 
 plugs:
   gtk-3-themes:
@@ -126,8 +128,9 @@ parts:
 
   cli:
     plugin: make
-    # make-parameters:
-      # - build
+    make-parameters:
+      - build
+      - ARCH=x86-64-modern
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev
