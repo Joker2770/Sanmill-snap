@@ -77,7 +77,7 @@ layout:
 
 apps:
   sanmill:
-    command: MillGame
+    command: usr/local/bin/sanmill
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -125,8 +125,6 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
-    stage:
-      - ../parts/sanmill/MillGame
 
   cli:
     plugin: make
