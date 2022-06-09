@@ -110,7 +110,7 @@ parts:
   sanmill:
     after: [desktop-qt5]
     plugin: qmake
-    options:
+    qmake-parameters:
       - "PREFIX=/usr/local"
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
@@ -127,6 +127,7 @@ parts:
       - libqt5multimedia5
     override-build: |
       snapcraftctl build
+      pwd
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
   # cli:
