@@ -142,6 +142,7 @@ parts:
     override-build: |
       cd src
       make build -j $(nproc) ARCH=ppc-64
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./sanmill ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
   desktop-qt5:
