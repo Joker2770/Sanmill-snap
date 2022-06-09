@@ -141,7 +141,7 @@ parts:
       - make
     override-build: |
       cd src
-      make build -j $(nproc) ARCH=x86-64-modern
+      make build -j $(nproc) ARCH=armv7
       make install
 
   desktop-qt5:
