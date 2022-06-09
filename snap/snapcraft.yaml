@@ -47,7 +47,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 base: core22
 license: 'GPL-3.0+'
 architectures:
-  - build-on: arm64
+  - build-on: amd64
 
 plugs:
   gtk-3-themes:
@@ -124,13 +124,13 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     organize:
-      MillGame : usr/local/bin/
+      "MillGame" : usr/local/bin/
 
   cli:
     plugin: make
     make-parameters:
       - build
-      - ARCH=armv8
+      - ARCH=x86-64-modern
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev
