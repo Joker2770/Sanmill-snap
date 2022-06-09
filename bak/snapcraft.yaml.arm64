@@ -129,17 +129,20 @@ parts:
 
   cli:
     plugin: make
-    make-parameters:
-      - build
-      - ARCH=armv8
+    # make-parameters:
+      # - build
+      # - ARCH=armv8
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
-    source-subdir: src
     build-packages:
       - gcc
       - g++
       - make
+    override-build: |
+      cd src
+      make build -j $(nproc) ARCH=x86-64-modern
+      make install
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
