@@ -77,7 +77,7 @@ layout:
 
 apps:
   sanmill:
-    command: usr/local/bin/sanmill
+    command: sanmill
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -104,7 +104,7 @@ apps:
       QT_QPA_PLATFORMTHEME: gtk3
 
   cli:
-    command: usr/local/bin/sanmill
+    command: sanmill
 
 parts:
   sanmill:
