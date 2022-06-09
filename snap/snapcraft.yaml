@@ -77,7 +77,7 @@ layout:
 
 apps:
   sanmill:
-    command: usr/local/bin/MillGame
+    command: usr/local/bin/sanmill
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -133,7 +133,7 @@ parts:
       - ARCH=x86-64-modern
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
-    source-branch: dev
+    source-branch: master
     source-subdir: src
     build-packages:
       - gcc
