@@ -76,32 +76,32 @@ layout:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
-  sanmill:
-    command: usr/local/bin/sanmill
-    command-chain:
-      - bin/desktop-launch
-    plugs:
-      - home
-      - desktop
-      - desktop-legacy
-      - wayland
-      - unity7
-      - x11
-      - opengl
-      - removable-media
-      - gsettings
-      - network
-      - network-bind
-      - network-manager
-      - network-manager-observe
-      - network-observe
-      - network-status
-      - network-setup-control
-      - network-setup-observe
-      - audio-playback
-    environment:
-      # Use GTK3 cursor theme, icon theme and open/save file dialogs.
-      QT_QPA_PLATFORMTHEME: gtk3
+  # sanmill:
+    # command: usr/local/bin/sanmill
+    # command-chain:
+      # - bin/desktop-launch
+    # plugs:
+      # - home
+      # - desktop
+      # - desktop-legacy
+      # - wayland
+      # - unity7
+      # - x11
+      # - opengl
+      # - removable-media
+      # - gsettings
+      # - network
+      # - network-bind
+      # - network-manager
+      # - network-manager-observe
+      # - network-observe
+      # - network-status
+      # - network-setup-control
+      # - network-setup-observe
+      # - audio-playback
+    # environment:
+      # # Use GTK3 cursor theme, icon theme and open/save file dialogs.
+      # QT_QPA_PLATFORMTHEME: gtk3
 
   cli:
     command: usr/local/bin/sanmill
