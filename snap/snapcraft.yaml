@@ -123,8 +123,6 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
-    stage:
-      - ../MillGame
 
   cli:
     plugin: make
