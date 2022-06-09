@@ -126,7 +126,7 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     stage:
-      - ../build/MillGame
+      - ../parts/sanmill/MillGame
 
   cli:
     plugin: make
