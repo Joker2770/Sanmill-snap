@@ -76,7 +76,7 @@ layout:
 
 apps:
   sanmill:
-    command: MillGame
+    command: usr/local/bin/MillGame
     command-chain:
       - bin/desktop-launch
     plugs:
