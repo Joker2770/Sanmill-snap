@@ -77,7 +77,7 @@ layout:
 
 apps:
   sanmill:
-    command: usr/local/bin/MillGame
+    command: MillGame
     command-chain:
       - bin/desktop-launch
     plugs:
@@ -110,8 +110,6 @@ parts:
   sanmill:
     after: [desktop-qt5]
     plugin: qmake
-    options:
-      - "PREFIX=/usr/local/bin"
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: dev
