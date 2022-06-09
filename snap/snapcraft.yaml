@@ -44,7 +44,7 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core18
+base: core20
 license: 'GPL-3.0+'
 architectures:
   - build-on: amd64
@@ -125,7 +125,9 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
-    artifacts: [MillGame]
+    override-build: |
+      snapcraftctl build
+      cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
   # cli:
     # plugin: make
