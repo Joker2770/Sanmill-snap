@@ -136,7 +136,7 @@ parts:
         - dpkg-dev
       stage-packages:
         - libxkbcommon0
-        # - ttf-ubuntu-font-family
+        - ttf-ubuntu-font-family
         - dmz-cursor-theme
         - light-themes
         - adwaita-icon-theme
@@ -148,6 +148,7 @@ parts:
         - libqt5svg5 # for loading icon themes which are svg
         - try: [appmenu-qt5] # not available on core18
         - locales-all
+        - xdg-user-dirs
 
   qt5-gtk-platform:
     plugin: nil
