@@ -46,7 +46,7 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 base: core20
 license: 'GPL-3.0+'
 architectures:
-  - build-on: amd64
+  # - build-on: amd64
   - build-on: armhf
   - build-on: arm64
   - build-on: ppc64el
