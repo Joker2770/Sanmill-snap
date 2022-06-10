@@ -78,10 +78,6 @@ parts:
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
-    stage-packages:
-      - libqt5core5a
-      - libqt5widgets5
-      - libqt5multimedia5
     override-build: |
       snapcraftctl build
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
