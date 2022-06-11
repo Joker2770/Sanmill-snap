@@ -104,7 +104,7 @@ apps:
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
 
-  cli:
+  cui:
     command: usr/local/bin/sanmill
 
 parts:
@@ -129,7 +129,7 @@ parts:
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
-  cli:
+  cui:
     plugin: make
     # make-parameters:
       # - build
