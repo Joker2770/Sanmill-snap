@@ -39,50 +39,19 @@ description: |
   * A player can also lose with more than three pieces
   if his opponent blocks them not to be moved.
 
-# icon: gui/icon.png
+  _More build details: https://github.com/Joker2770/Sanmill-snap.git_
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 base: core20
 license: 'GPL-3.0+'
 architectures:
-  # - build-on: amd64
-  - build-on: armhf
-  - build-on: arm64
-  - build-on: ppc64el
-  - build-on: s390x
-
-plugs:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-
-layout:
-  /etc/fonts:
-    bind: $SNAP/etc/fonts
-  /etc/pulse:
-    bind: $SNAP/etc/pulse
-  /usr/local/share:
-    bind: $SNAP/usr/local/share
-  /usr/share/X11:
-    bind: $SNAP/usr/share/X11
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
+  - build-on: amd64
 
 apps:
   sanmill:
     command: usr/local/bin/MillGame
-    command-chain:
-      - bin/desktop-launch
+    extensions: [kde-neon]
     plugs:
       - home
       - desktop
@@ -96,15 +65,12 @@ apps:
       - network
       - network-bind
       - audio-playback
-    environment:
-      DISABLE_WAYLAND: 1
-      XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
-      # Use GTK3 cursor theme, icon theme and open/save file dialogs.
-      QT_QPA_PLATFORMTHEME: gtk3
+
+  cui:
+    command: usr/local/bin/sanmill
 
 parts:
   sanmill:
-    after: [desktop-qt5]
     plugin: qmake
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
@@ -115,41 +81,25 @@ parts:
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
-    stage-packages:
-      - libqt5core5a
-      - libqt5widgets5
-      - libqt5multimedia5
     override-build: |
       snapcraftctl build
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
-  desktop-qt5:
-      source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-      source-subdir: qt
-      plugin: make
-      make-parameters: ["FLAVOR=qt5"]
-      build-packages:
-        - qtbase5-dev
-        - dpkg-dev
-      stage-packages:
-        - libxkbcommon0
-        - ttf-ubuntu-font-family
-        - dmz-cursor-theme
-        - light-themes
-        - adwaita-icon-theme
-        - gnome-themes-standard
-        - shared-mime-info
-        - libqt5gui5
-        - libgdk-pixbuf2.0-0
-        - libgtk2.0-0
-        - libqt5svg5 # for loading icon themes which are svg
-        - try: [appmenu-qt5] # not available on core18
-        - locales-all
-        - xdg-user-dirs
-
-  qt5-gtk-platform:
-    plugin: nil
-    stage-packages:
-      - qt5-gtk-platformtheme
-      - libcanberra-gtk-module
+  cui:
+    plugin: make
+    # make-parameters:
+      # - build
+      # - ARCH=x86-64-modern
+    source: https://github.com/calcitem/Sanmill.git
+    source-type: git
+    source-branch: master
+    build-packages:
+      - gcc
+      - g++
+      - make
+    override-build: |
+      cd src
+      make build -j $(nproc) ARCH=x86-64-modern
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
+      cp ./sanmill ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
