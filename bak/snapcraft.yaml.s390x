@@ -122,7 +122,8 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-build: |
-      snapcraftctl build
+      qmake
+      make -j $(nproc)
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
