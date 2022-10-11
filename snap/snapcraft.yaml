@@ -46,7 +46,11 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 base: core20
 license: 'GPL-3.0+'
 architectures:
+  # - build-on: amd64
+  - build-on: armhf
   - build-on: arm64
+  - build-on: ppc64el
+  - build-on: s390x
 
 plugs:
   gtk-3-themes:
@@ -91,21 +95,12 @@ apps:
       - gsettings
       - network
       - network-bind
-      - network-manager
-      - network-manager-observe
-      - network-observe
-      - network-status
-      - network-setup-control
-      - network-setup-observe
       - audio-playback
     environment:
       DISABLE_WAYLAND: 1
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
-
-  cui:
-    command: usr/local/bin/sanmill
 
 parts:
   sanmill:
@@ -129,24 +124,6 @@ parts:
       make -j $(nproc)
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
-
-  cui:
-    plugin: make
-    # make-parameters:
-      # - build
-      # - ARCH=armv8
-    source: https://github.com/calcitem/Sanmill.git
-    source-type: git
-    source-branch: master
-    build-packages:
-      - gcc
-      - g++
-      - make
-    override-build: |
-      cd src
-      make build -j $(nproc) ARCH=armv8
-      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
-      cp ./sanmill ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
