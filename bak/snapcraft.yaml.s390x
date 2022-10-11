@@ -111,6 +111,7 @@ parts:
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
+    source-depth: 1
     build-packages:
       - gcc
       - g++
@@ -121,9 +122,10 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
+    qmake-parameters:
+      - CONFIG+=c++17
     override-build: |
-      qmake ./millgame.pro
-      make -j $(nproc)
+      snapcraftctl build
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
