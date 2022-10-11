@@ -82,7 +82,7 @@ parts:
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     override-build: |
-      qmake
+      qmake millgame.pro
       make -j $(nproc)
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
