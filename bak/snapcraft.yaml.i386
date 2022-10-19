@@ -125,8 +125,6 @@ parts:
       # - libqt5core5a
       # - libqt5widgets5
       # - libqt5multimedia5
-    # qmake-parameters:
-      # - CONFIG+=c++17
     # override-build: |
       # snapcraftctl build
       # mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
