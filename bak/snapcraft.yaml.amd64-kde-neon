@@ -43,7 +43,7 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core20
+base: core22
 license: 'GPL-3.0+'
 architectures:
   - build-on: amd64
@@ -72,21 +72,20 @@ apps:
 
 parts:
   sanmill:
-    plugin: qmake
+    plugin: cmake
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
-    source-depth: 1
-    build-environment:
-      - CC: clang
-      - CXX: clang++
+    source-subdir: src/ui/qt/
     build-packages:
-      - clang-10
+      - gcc
+      - g++
       - make
+      - cmake
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     override-build: |
-      snapcraftctl build
+      craftctl default
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
@@ -98,11 +97,9 @@ parts:
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
-    build-environment:
-      - CC: clang
-      - CXX: clang++
     build-packages:
-      - clang-10
+      - gcc
+      - g++
       - make
     override-build: |
       cd src
