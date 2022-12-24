@@ -85,7 +85,7 @@ parts:
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
     override-build: |
-      cmake . -DCMAKE_BUILD_TYPE=Release
+      cmake ${SNAPCRAFT_PART_BUILD}/src/ui/qt -DCMAKE_BUILD_TYPE=Release
       make -j $(nproc)
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
