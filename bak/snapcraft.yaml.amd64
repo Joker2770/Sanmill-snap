@@ -116,8 +116,7 @@ parts:
     source-branch: master
     source-depth: 1
     build-packages:
-      - gcc
-      - g++
+      - clang-12
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
