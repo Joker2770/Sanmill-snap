@@ -114,7 +114,7 @@ parts:
       - CC: clang
       - CXX: clang++
     build-packages:
-      - clang-12
+      - clang-10
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
