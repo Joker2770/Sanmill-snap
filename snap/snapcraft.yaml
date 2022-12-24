@@ -116,8 +116,8 @@ parts:
     source-branch: master
     source-depth: 1
     build-environment:
-      - CFLAGS: clang
-      - CXXFLAGS: clang++
+      - CC: clang
+      - CXX: clang++
     build-packages:
       - clang-12
       - make
@@ -141,8 +141,8 @@ parts:
     source-type: git
     source-branch: master
     build-environment:
-      - CFLAGS: clang
-      - CXXFLAGS: clang++
+      - CC: clang
+      - CXX: clang++
     build-packages:
       - clang-12
       - make
