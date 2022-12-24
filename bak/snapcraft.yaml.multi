@@ -43,7 +43,7 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-base: core22
+base: core20
 license: 'GPL-3.0+'
 architectures:
   - build-on: amd64
@@ -111,8 +111,7 @@ parts:
     source-branch: master
     source-depth: 1
     build-packages:
-      - gcc
-      - g++
+      - clang-12
       - make
       - qtmultimedia5-dev
       - libqt5multimedia5-plugins
@@ -121,7 +120,7 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-build: |
-      craftctl default
+      snapcraftctl build
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
@@ -145,7 +144,7 @@ parts:
         - libgdk-pixbuf2.0-0
         - libgtk2.0-0
         - libqt5svg5 # for loading icon themes which are svg
-        # - on amd64: [appmenu-qt5] # not available on core18
+        - try: [appmenu-qt5] # not available on core18
         - locales-all
         - xdg-user-dirs
 

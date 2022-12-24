@@ -125,7 +125,7 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-build: |
-      craftctl default
+      snapcraftctl build
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
@@ -167,7 +167,7 @@ parts:
         - libgdk-pixbuf2.0-0
         - libgtk2.0-0
         - libqt5svg5 # for loading icon themes which are svg
-        - on amd64: [appmenu-qt5] # not available on core18
+        - try: [appmenu-qt5] # not available on core18
         - locales-all
         - xdg-user-dirs
 
