@@ -105,7 +105,7 @@ apps:
 parts:
   sanmill:
     after: [desktop-qt5]
-    plugin: qmake
+    plugin: cmake
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
