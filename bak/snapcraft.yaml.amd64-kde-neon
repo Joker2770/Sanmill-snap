@@ -96,8 +96,7 @@ parts:
     source-type: git
     source-branch: master
     build-packages:
-      - gcc
-      - g++
+      - clang-12
       - make
     override-build: |
       cd src
