@@ -127,7 +127,8 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-build: |
-      craftctl default
+      cmake ${SNAPCRAFT_PART_BUILD}/sanmill/src/src/ui/qt
+      cmake --build .
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./MillGame ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
