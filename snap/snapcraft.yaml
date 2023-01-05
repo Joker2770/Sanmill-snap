@@ -47,7 +47,10 @@ base: core22
 license: 'GPL-3.0+'
 architectures:
   - build-on: amd64
-    build-for: amd64
+  - build-on: armhf
+  - build-on: arm64
+  - build-on: ppc64el
+  - build-on: s390x
 
 plugs:
   gtk-3-themes:
@@ -92,21 +95,12 @@ apps:
       - gsettings
       - network
       - network-bind
-      - network-manager
-      - network-manager-observe
-      - network-observe
-      - network-status
-      - network-setup-control
-      - network-setup-observe
       - audio-playback
     environment:
       DISABLE_WAYLAND: 1
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
       # Use GTK3 cursor theme, icon theme and open/save file dialogs.
       QT_QPA_PLATFORMTHEME: gtk3
-
-  cui:
-    command: usr/local/bin/sanmill
 
 parts:
   sanmill:
@@ -132,24 +126,6 @@ parts:
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./mill-pro ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
-  cui:
-    plugin: make
-    # make-parameters:
-      # - build
-      # - ARCH=x86-64-modern
-    source: https://github.com/calcitem/Sanmill.git
-    source-type: git
-    source-branch: master
-    build-packages:
-      - gcc
-      - g++
-      - make
-    override-build: |
-      cd src
-      make build -j $(nproc) ARCH=x86-64-modern
-      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
-      cp ./sanmill ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
-
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
       source-subdir: qt
@@ -170,7 +146,7 @@ parts:
         - libgdk-pixbuf2.0-0
         - libgtk2.0-0
         - libqt5svg5 # for loading icon themes which are svg
-        # - on amd64: [appmenu-qt5] # not available on core18
+        # - try: [appmenu-qt5] # not available on core18
         - locales-all
         - xdg-user-dirs
 
