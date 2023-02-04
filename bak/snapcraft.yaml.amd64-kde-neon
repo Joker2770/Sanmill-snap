@@ -74,7 +74,7 @@ parts:
   sanmill:
     plugin: cmake
     cmake-parameters:
-      - -DCMAKE_INSTALL_PREFIX=usr/local
+      - -DCMAKE_INSTALL_PREFIX=/usr/local
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
