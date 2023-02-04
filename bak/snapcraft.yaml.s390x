@@ -114,7 +114,6 @@ parts:
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
-    source-subdir: src/ui/qt
     build-packages:
       - gcc
       - g++
@@ -126,7 +125,7 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-build: |
-      cmake -B build -DCMAKE_BUILD_TYPE=Release
+      cmake ${SNAPCRAFT_PART_BUILD}/../src/src/ui/qt -DCMAKE_BUILD_TYPE=Release
       make -j $(nproc)
       mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
       cp ./mill-pro ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
