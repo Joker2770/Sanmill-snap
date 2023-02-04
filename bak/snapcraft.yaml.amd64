@@ -129,11 +129,11 @@ parts:
       - libqt5core5a
       - libqt5widgets5
       - libqt5multimedia5
-    # override-build: |
-      # cmake ${SNAPCRAFT_PART_BUILD}/../src/src/ui/qt -DCMAKE_BUILD_TYPE=Release
-      # make -j $(nproc)
-      # mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
-      # cp ./mill-pro ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
+    override-build: |
+      cmake -B build -DCMAKE_BUILD_TYPE=Release
+      make -j $(nproc)
+      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
+      cp ./mill-pro ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
 
   cui:
     plugin: make
