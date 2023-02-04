@@ -117,7 +117,7 @@ parts:
     source: https://github.com/calcitem/Sanmill.git
     source-type: git
     source-branch: master
-    source-depth: 1
+    source-subdir: src/ui/qt
     build-packages:
       - gcc
       - g++
