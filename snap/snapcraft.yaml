@@ -75,8 +75,8 @@ layout:
     bind: $SNAP/usr/local/share
   /usr/share/X11:
     bind: $SNAP/usr/share/X11
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gtk-2.0/modules
+  /usr/lib/$CRAFT_ARCH_TRIPLET/gtk-2.0/modules:
+    bind: $SNAP/usr/lib/$CRAFT_ARCH_TRIPLET/gtk-2.0/modules
 
 apps:
   sanmill:
@@ -123,14 +123,14 @@ parts:
       - libqt5widgets5
       - libqt5multimedia5
     override-pull: |
-      snapcraftctl pull
+      craftctl default
       chmod +x ./version.sh
       ./version.sh
     override-build: |
-      cmake ${SNAPCRAFT_PART_BUILD}/../src/src/ui/qt -DCMAKE_BUILD_TYPE=Release
+      cmake ${CRAFT_PART_BUILD}/../src/src/ui/qt -DCMAKE_BUILD_TYPE=Release
       make -j $(nproc)
-      mkdir -p ${SNAPCRAFT_PART_INSTALL}/usr/local/bin
-      cp ./mill-pro ${SNAPCRAFT_PART_INSTALL}/usr/local/bin/
+      mkdir -p ${CRAFT_PART_INSTALL}/usr/local/bin
+      cp ./mill-pro ${CRAFT_PART_INSTALL}/usr/local/bin/
 
   desktop-qt5:
       source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
